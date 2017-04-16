@@ -35,9 +35,9 @@ MEDIA_URL = '/archivos/'  #put whatever you want that when url is rendered it wi
 SECRET_KEY = '%kgs%2&nfiv$0%k1t!9@a-y%7ghp5m@0ztrr*b-#58_nd!nf5q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','jmrivas.pythonanywhere.com']
 
 
 #Archivo log
@@ -75,6 +75,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sitioWeb',
 )
 
 MIDDLEWARE_CLASSES = (
