@@ -610,7 +610,7 @@ $('#formulario_correo').on('submit', function(event){
   event.preventDefault();
   enviar_correo($('#correo').val(),$('#nombre').val(),$('#contenido').val());
 });
-
+var resultado="";
 function enviar_correo(email_cliente,nombre_cliente,contenido_correo) {
   $.ajax({
     url : "correo/", // La URL que llama a la vista
@@ -618,6 +618,7 @@ function enviar_correo(email_cliente,nombre_cliente,contenido_correo) {
     data : { correo_electronico : email_cliente, nombre: nombre_cliente, contenido: contenido_correo}, // Datos enviados con el request en formato JSON
     success : function(json) {
       $.each(json, function(key,value) {
+        resultado=value;
         alert(value)
       });
     },
@@ -626,7 +627,11 @@ function enviar_correo(email_cliente,nombre_cliente,contenido_correo) {
                          " <a href='#' class='close'>&times;</a></div>");
       console.log(xhr.status + ": " + xhr.responseText); // Se envia el codigo del status y el texto que ha devuelto el response
     }
-  });
+  }).done(function( data ) {
+     if (resultado==="Gracias por tomarnos en cuenta.\n\nPronto uno de nuestros miembros se pondra en contacto usted."){
+        location.reload(true);
+     }
+    });
 };
 </script>
 <script type="text/javascript" src="{% static 'js/token.js' %}"></script>
